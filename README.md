@@ -31,7 +31,7 @@ ORION: "Bem-vindo de volta, Comandante. Algo deu errado... mas não se preocupe,
 1. Perguntar "Quem... quem é você?"  
 2. Tentar se levantar  
 3. Olhar ao redor  
-
+```
 ---
 
 ## 📋 **Recursos do Jogo**  
