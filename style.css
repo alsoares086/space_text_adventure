@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --main-bg-color: #0a0a0a;
+    --text-color: #00ff00;
+    --highlight-color: #00aa00;
+    --terminal-bg: #000000;
+    --ai-text-color: #00ffff;
+    --ai-glow: 0 0 10px #00ffff;
+    --player-text-color: #ffffff;
+    --system-text-color: #ff5555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+#game-screen {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    min-height: 400px;
+    grid-column: 1 / -1;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+#text-display {
+    margin-bottom: 20px;
+    animation: textFade 0.5s ease-in;
+}
+
+.ai-speech {
+    color: var(--ai-text-color);
+    text-shadow: var(--ai-glow);
+    font-style: italic;
+    padding-left: 20px;
+    border-left: 2px solid var(--ai-text-color);
+    margin: 10px 0;
+}
+
+.player-speech {
+    color: var(--player-text-color);
+    padding-left: 20px;
+    border-left: 2px solid var(--player-text-color);
+    margin: 10px 0;
+}
+
+.system-message {
+    color: var(--system-text-color);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-btn {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-btn:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+    transform: translateX(10px);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.choice-btn::before {
+    content: '>';
+    position: absolute;
+    left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.choice-btn:hover::before {
+    opacity: 1;
+}
+
+#inventory, #logs {
+    background-color: var(--terminal-bg);
+    padding: 15px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+}
+
+h3 {
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+@keyframes textFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid var(--text-color);
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--text-color) }
+}
